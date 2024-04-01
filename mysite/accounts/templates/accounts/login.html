@@ -1,0 +1,29 @@
+
+{% extends "app/base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="card card-auth my-5 mx-auto">
+    <div class="card-body">
+        <h5 class="card-title text-center">ログイン</h5>
+        <form method="post" class="form-auth">
+            {% csrf_token %}
+            <div class="form-label-group">
+                <!-- from allauth.account import views の  -->
+                <!-- ログインフィールドをレンダリング -->
+                <!-- '.login' ログインフォームのパスワード入力フィールドを指定 -->
+                <!-- 'class=form-control' 総じて言えば、form-control クラスは、
+                    フォームの入力要素を一貫したスタイルで装飾し、ユーザーに使いやすいフォームを提供します -->
+                {% render_field form.login class="form-control" placeholder="ユーザー名" %}
+            </div>
+            <div class="form-label-group">
+                <!-- from allauth.account import views の  -->
+                {% render_field form.password class="form-control" placeholder="パスワード" %}
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit">ログイン</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

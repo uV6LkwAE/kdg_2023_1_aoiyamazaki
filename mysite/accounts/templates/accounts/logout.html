@@ -1,0 +1,19 @@
+<!-- ログアウト確認用テンプレート -->
+
+{% extends "app/base.html" %}
+
+{% block content %}
+<div class="card card-auth my-5 mx-auto">
+    <div class="card-body">
+        <p class="card-title text-center">ログアウトしますか？</p>
+        <form method="post" class="form-auth">
+            <!-- 送信はcsrf_token必須 -->
+            {% csrf_token %}
+            <div class="text-center">
+                <button class="btn btn-warning" type="submit">ログアウト</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
